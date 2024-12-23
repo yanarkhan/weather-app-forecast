@@ -63,15 +63,9 @@ To run this project locally, follow these steps:
 - View detailed weather data including temperature, humidity, and wind speed.
 - The app is responsive and adapts to both desktop and mobile screens.
 
-## Contributing
+## Demo
 
-Contributions are welcome! If you'd like to contribute, please fork the repository and make changes as you'd like. Pull requests are gladly accepted.
-
-1. Fork the project.
-2. Create a feature branch (`git checkout -b feature/YourFeature`).
-3. Commit your changes (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature/YourFeature`).
-5. Open a pull request.
+You can check out the live demo of the Weather App [here](https://weather-app-forecast-sand.vercel.app/).
 
 ## License
 

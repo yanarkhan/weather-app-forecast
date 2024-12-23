@@ -41,21 +41,39 @@ const App = () => {
 
   return (
     <div
-      className={`mx-auto max-w-screen-lg  *: py-2 px-8 md:px-16 lg:px-32 bg-gradient-to-br shadow-xl shadow-gray-400 ${formatBackground()}`}
+      className={`min-h-screen flex items-center justify-center p-4 bg-gradient-to-br shadow-xl ${formatBackground()} `}
     >
-      <TopButtons setQuery={setQuery} />
-      <Inputs setQuery={setQuery} setUnits={setUnits} />
+      <div
+        className={`w-full max-w-screen-lg rounded-lg overflow-hidden 
+          py-4 sm:py-6 md:py-8
+          px-4 sm:px-6 md:px-8 lg:px-12
+          bg-gradient-to-br shadow-xl  
+          transition-all duration-300 ease-in-out
+          ${formatBackground()}`}
+      >
+        <div className="space-y-4 sm:space-y-6">
+          <TopButtons setQuery={setQuery} />
+          <Inputs setQuery={setQuery} setUnits={setUnits} />
 
-      {weather && (
-        <>
-          <TimeAndLocation weather={weather} />
-          <TempAndDetails weather={weather} units={units} />
-          <Forecast title="3 hour step forecast" data={weather.hourly} />
-          <Forecast title="daily forecast" data={weather.daily} />
-        </>
-      )}
+          {weather && (
+            <div className="space-y-4 sm:space-y-6 md:space-y-8">
+              <TimeAndLocation weather={weather} />
+              <TempAndDetails weather={weather} units={units} />
+              <div className="space-y-4 md:space-y-6">
+                <Forecast title="3 hour step forecast" data={weather.hourly} />
+                <Forecast title="daily forecast" data={weather.daily} />
+              </div>
+            </div>
+          )}
+        </div>
 
-      <ToastContainer autoClose={2500} hideProgressBar={true} theme="colored" />
+        <ToastContainer
+          autoClose={2500}
+          hideProgressBar={true}
+          theme="colored"
+          className="sm:text-base md:text-lg"
+        />
+      </div>
     </div>
   );
 };

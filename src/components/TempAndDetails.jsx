@@ -64,6 +64,7 @@ const TempAndDetails = ({
       title: "High",
       value: `${temp_max.toFixed()}°`,
     },
+
     {
       id: 4,
       Icon: MdKeyboardArrowDown,
@@ -78,28 +79,30 @@ const TempAndDetails = ({
         <p>{details}</p>
       </div>
 
-      <div className="flex flex-row items-center justify-between py-3">
+      <div className="flex flex-col items-center justify-between py-3 space-y-3 md:flex-row md:space-y-0">
         <img src={icon} alt="weather icon" className="w-20" />
-        <p className="text-5xl">{`${temp.toFixed()}`}°</p>
+        <p className="text-4xl font-medium sm:text-5xl">
+          {`${temp.toFixed()}`}°
+        </p>
+
         <div className="flex flex-col space-y-3 items-start">
           {verticalDetails.map(({ id, Icon, title, value }) => (
-            <div
-              key={id}
-              className="flex font-light text-sm items-center justify-center"
-            >
-              <Icon size={18} className="mr-1" />
-              {`${title}: `}
-              <span className="font-medium ml-1">{value}</span>
+            <div key={id} className="flex items-center justify-start text-sm">
+              <Icon size={20} className="mr-2" />
+              <p className="font-light">
+                {`${title}: `}
+                <span className="font-medium ml-1">{value}</span>
+              </p>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="flex flex-row items-center justify-center space-x-10 text-sm py-3">
+      <div className="flex flex-col items-center justify-center space-y-4 text-sm py-3 md:flex-row md:space-y-0 md:space-x-10">
         {horizontalDetails.map(({ id, Icon, title, value }) => (
-          <div key={id} className="flex flex-row items-center">
+          <div key={id} className="flex items-center justify-center space-x-2">
             <Icon size={30} />
-            <p className="font-light ml-1">
+            <p className="font-light">
               {`${title}: `}
               <span className="font-medium ml-1">{value}</span>
             </p>

@@ -6,11 +6,15 @@ const TimeAndLocation = ({
   return (
     <div>
       <div className="flex items-center justify-center my-6">
-        <p className="text-xl font-extralight">{formattedLocalTime}</p>
+        <p className="text-lg font-extralight sm:text-xl md:text-2xl">
+          {formattedLocalTime}
+        </p>
       </div>
 
       <div className="flex items-center justify-center my-3">
-        <p className="text-3xl font-medium">{`${name}, ${country}`}</p>
+        <p className="text-2xl font-medium sm:text-3xl md:text-4xl">
+          {`${name}, ${country}`}
+        </p>
       </div>
     </div>
   );

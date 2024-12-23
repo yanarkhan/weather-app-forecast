@@ -3,8 +3,6 @@ import { DateTime } from "luxon";
 const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
 const BASE_URL = import.meta.env.VITE_REACT_APP_API_BASE_URL;
 
-console.log("BASE_URL:", BASE_URL);
-console.log("API_KEY:", API_KEY);
 const getWeatherData = (infoType, searchParams) => {
   const url = new URL(BASE_URL + infoType);
   url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
@@ -13,7 +11,7 @@ const getWeatherData = (infoType, searchParams) => {
 };
 
 const iconUrlFromCode = (icon) =>
-  `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
 const formatToLocalTime = (
   secs,
@@ -98,5 +96,4 @@ const getFormattedWeatherData = async (searchParams) => {
   return { ...formattedCurrentWeather, ...formattedForecastWeather };
 };
 
-// export default getWeatherData;
 export default getFormattedWeatherData;

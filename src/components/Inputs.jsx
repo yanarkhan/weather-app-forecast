@@ -16,40 +16,71 @@ const Inputs = ({ setQuery, setUnits }) => {
       });
     }
   };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter" && city !== "") {
+      handleSearchClick();
+    }
+  };
+
   return (
-    <div className="block md:flex flex-row justify-center my-6">
-      <div className="flex flex-row w-full md:w-3/4 items-center justify-center space-x-4">
-        <input
-          value={city}
-          onChange={(e) => setCity(e.currentTarget.value)}
-          type="text"
-          placeholder="search by city..."
-          className="text-gray-500 text-xl font-light p-2 w-full shadow-xl capitalize focus:outline-none placeholder:lowercase"
-        />
+    <div className="flex flex-col gap-4 my-4 sm:flex-row sm:gap-6 sm:my-6">
+      {/* Search Section */}
+      <div className="flex-1 flex items-center gap-2 sm:gap-3">
+        <div className="relative flex-1">
+          <input
+            value={city}
+            onChange={(e) => setCity(e.currentTarget.value)}
+            onKeyPress={handleKeyPress}
+            type="text"
+            placeholder="Search by city..."
+            className="w-full px-3 py-2
+              text-base text-gray-700
+              bg-white/90 rounded-lg
+              shadow-md focus:shadow-lg
+              transition-all duration-200
+              focus:outline-none focus:ring-2 focus:ring-gray-400/50
+              placeholder:text-gray-400 placeholder:text-base
+              capitalize placeholder:normal-case sm:py-2.5 sm:text-lg"
+          />
+        </div>
 
-        <BiSearch
-          size={30}
-          className="cursor-pointer transition ease-in-out hover:scale-125"
+        <button
           onClick={handleSearchClick}
-        />
+          className="p-2 rounded-lg bg-white/90 shadow-md
+            hover:shadow-lg active:scale-95
+            transition-all duration-200"
+        >
+          <BiSearch size={24} className="text-gray-700" />
+        </button>
 
-        <BiCurrentLocation
-          size={30}
-          className="cursor-pointer transition ease-in-out hover:scale-125"
+        <button
           onClick={handleLocationClick}
-        />
+          className="p-2 rounded-lg bg-white/90 shadow-md
+            hover:shadow-lg active:scale-95
+            transition-all duration-200"
+        >
+          <BiCurrentLocation size={24} className="text-gray-700" />
+        </button>
       </div>
 
-      <div className="flex flex-row md:mt-0 mt-5 w-full md:w-1/4 items-center justify-center">
+      {/* Units Toggle Section */}
+      <div className="flex items-center justify-center gap-2 sm:justify-end">
         <button
-          className="text-2xl font-medium transition ease-out hover:scale-125"
+          className="text-xl font-medium 
+            hover:scale-110 active:scale-95
+            transition-all duration-200
+            focus:outline-none sm:text-2xl"
           onClick={() => setUnits("metric")}
         >
           °C
         </button>
-        <p className="text-2xl font-medium mx-1">|</p>
+        <span className="text-xl font-medium opacity-50 sm:text-2xl">|</span>
         <button
-          className="text-2xl font-medium transition ease-out hover:scale-125"
+          className="text-xl font-medium
+            hover:scale-110 active:scale-95
+            transition-all duration-200
+            focus:outline-none sm:text-2xl"
           onClick={() => setUnits("imperial")}
         >
           °F
